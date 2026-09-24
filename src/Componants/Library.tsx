@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2 } from "lucide-react";
 import SearchBar from "@/Componants/SearchBar";
 import WorkoutCard from "@/Componants/WorkoutCardLoad/WorkoutCard";
 import { fetchWorkouts } from "@/Lib/API";
@@ -9,6 +8,8 @@ import { filterWorkouts } from "@/Lib/filterWorkouts";
 import type { Workout } from "@/types/fitTypes";
 
 const gridClass = "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3";
+const noticeClass =
+  "rounded-box border border-dashed border-base-300 bg-base-100 px-4 py-12 text-center text-sm text-base-content/60";
 
 export default function Library() {
   const [workouts, setWorkouts] = useState<Workout[] | null>(null);
@@ -45,10 +46,10 @@ export default function Library() {
     <section id="library" className="w-full scroll-mt-24 py-12 sm:py-16">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-oswald text-3xl font-bold uppercase tracking-wide text-fg">
+          <h2 className="font-oswald text-3xl font-bold uppercase tracking-wide">
             The Library
           </h2>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-2 text-sm text-base-content/60">
             Twelve lifts covering every major muscle group.
           </p>
         </div>
@@ -61,22 +62,25 @@ export default function Library() {
       </div>
 
       {workouts && searching && (
-        <p role="status" className="mb-4 text-xs text-muted">
+        <p role="status" className="mb-4 text-xs text-base-content/60">
           Showing {filtered.length} of {workouts.length} workouts
         </p>
       )}
 
       {loading && (
         <div role="status" aria-live="polite">
-          <div className="mb-6 flex items-center gap-2 text-sm text-muted">
-            <Loader2 size={16} className="animate-spin" aria-hidden="true" />
+          <div className="mb-6 flex items-center gap-2 text-sm text-base-content/60">
+            <span
+              className="loading loading-spinner loading-sm"
+              aria-hidden="true"
+            />
             Loading workouts...
           </div>
           <div className={gridClass}>
             {Array.from({ length: 6 }, (_, index) => (
               <div
                 key={index}
-                className="h-[368px] animate-pulse rounded-2xl border border-line bg-card"
+                className="skeleton h-[368px] w-full rounded-box"
               />
             ))}
           </div>
@@ -85,13 +89,13 @@ export default function Library() {
 
       {failed && (
         <div className="flex flex-col items-start gap-3">
-          <p className="text-muted">
+          <p className="text-base-content/60">
             Could not load workouts. Please try again.
           </p>
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="rounded-full border border-line-strong px-4 py-2 text-xs text-fg transition hover:border-muted"
+            className="btn btn-outline btn-sm rounded-full"
           >
             Retry
           </button>
@@ -99,13 +103,11 @@ export default function Library() {
       )}
 
       {workouts && workouts.length === 0 && (
-        <p className="text-muted">No workouts found.</p>
+        <p className="text-base-content/60">No workouts found.</p>
       )}
 
       {workouts && workouts.length > 0 && filtered.length === 0 && (
-        <p className="rounded-xl border border-dashed border-dash bg-empty px-4 py-12 text-center text-sm text-muted">
-          No workouts match &quot;{query}&quot;.
-        </p>
+        <p className={noticeClass}>No workouts match &quot;{query}&quot;.</p>
       )}
 
       {filtered.length > 0 && (

@@ -9,9 +9,11 @@ export default function ThemeToggle() {
   return (
     <button
       type="button"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      onClick={() =>
+        setTheme(resolvedTheme === "fitlog-dark" ? "fitlog-light" : "fitlog-dark")
+      }
       aria-label="Toggle light and dark theme"
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-soft transition hover:border-line-strong hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-text"
+      className="btn btn-ghost btn-circle btn-sm"
     >
       <Sun size={16} aria-hidden="true" className="hidden dark:block" />
       <Moon size={16} aria-hidden="true" className="block dark:hidden" />

@@ -27,9 +27,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${oswald.variable} ${inter.variable}`}
     >
-      <body className="font-inter antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="flex min-h-screen flex-col bg-page text-fg">
+      <body className="bg-base-200 font-inter antialiased">
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="fitlog-dark"
+          themes={["fitlog-dark", "fitlog-light"]}
+          enableSystem={false}
+        >
+          <div className="flex min-h-screen flex-col bg-base-200 text-base-content">
             <div className="flex-1">
               <PlanProvider>{children}</PlanProvider>
             </div>

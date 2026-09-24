@@ -26,13 +26,13 @@ export default function WorkoutRow({
   ];
 
   return (
-    <article className="flex flex-col gap-4 rounded-2xl border border-line bg-card p-4 sm:flex-row sm:items-center sm:justify-between sm:p-[17px]">
+    <article className="card card-border flex-col gap-4 bg-base-100 p-4 sm:flex-row sm:items-center sm:justify-between">
       <div
         className={`flex min-w-0 items-center gap-3 sm:gap-4 ${
           done ? "opacity-60" : ""
         }`}
       >
-        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-raised sm:h-20 sm:w-36">
+        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-base-300 sm:h-20 sm:w-36">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={workout.image}
@@ -43,14 +43,16 @@ export default function WorkoutRow({
         </div>
 
         <div className="flex min-w-0 flex-col gap-0.5">
-          <h2 className="break-words font-oswald text-base font-bold uppercase leading-6 tracking-[0.4px] text-fg">
+          <h2 className="break-words font-oswald text-base font-bold uppercase leading-6 tracking-wide">
             {workout.name}
           </h2>
-          <p className="text-xs font-semibold text-muted">{workout.equipment}</p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1.5 text-xs text-soft">
+          <p className="text-xs font-semibold text-base-content/60">
+            {workout.equipment}
+          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1.5 text-xs text-base-content/80">
             {stats.map(({ Icon, text }) => (
               <span key={text} className="flex items-center gap-1.5">
-                <Icon size={14} aria-hidden="true" className="text-accent-text" />
+                <Icon size={14} aria-hidden="true" className="text-accent" />
                 {text}
               </span>
             ))}
@@ -61,7 +63,7 @@ export default function WorkoutRow({
       <div className="flex flex-wrap items-center gap-3 sm:justify-end">
         <Link
           href={`/workouts/${workout.id}`}
-          className="inline-flex h-[34px] items-center rounded-full border border-line-strong px-[18px] text-xs text-fg transition hover:border-muted"
+          className="btn btn-outline btn-sm rounded-full"
         >
           View Details
         </Link>
@@ -71,10 +73,8 @@ export default function WorkoutRow({
             type="button"
             onClick={onToggleDone}
             aria-pressed={done}
-            className={`inline-flex h-8 items-center gap-1.5 rounded-full px-4 text-xs font-semibold transition ${
-              done
-                ? "border border-accent-text text-accent-text hover:bg-accent-soft"
-                : "bg-accent text-accent-ink hover:brightness-95"
+            className={`btn btn-sm rounded-full ${
+              done ? "btn-outline btn-accent" : "btn-primary"
             }`}
           >
             <Check size={14} aria-hidden="true" />
@@ -88,7 +88,7 @@ export default function WorkoutRow({
           aria-label={
             mode === "plan" ? "Remove from today's plan" : "Remove from saved"
           }
-          className="rounded-md p-1.5 text-muted transition hover:text-fg"
+          className="btn btn-ghost btn-circle btn-sm"
         >
           <X size={16} aria-hidden="true" />
         </button>

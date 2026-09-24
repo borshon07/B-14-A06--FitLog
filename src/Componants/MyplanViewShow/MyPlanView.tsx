@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { usePlan } from "@/AllPlan/myplan";
 import { notify } from "@/Lib/notify";
 import { filterWorkouts } from "@/Lib/filterWorkouts";
@@ -57,7 +56,7 @@ export default function MyPlanView() {
 
   const planWorkouts = findWorkouts(planIds);
   const source = tab === "plan" ? planWorkouts : findWorkouts(savedIds);
-  const visible = filterWorkouts(source, query).sort(sorters[sortKey]);
+  const visible = [...filterWorkouts(source, query)].sort(sorters[sortKey]);
 
   const sum = (pick: (workout: Workout) => number) =>
     planWorkouts.reduce((total, workout) => total + pick(workout), 0);
@@ -93,47 +92,39 @@ export default function MyPlanView() {
   return (
     <main className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 px-6 py-10 sm:px-12">
       <section className="flex flex-col gap-2">
-        <h1 className="font-oswald text-3xl font-bold uppercase leading-9 tracking-[-0.75px] text-fg">
+        <h1 className="font-oswald text-3xl font-bold uppercase leading-9 tracking-tight">
           My Plan
         </h1>
-        <p className="text-sm text-muted">
+        <p className="text-sm text-base-content/60">
           Cap of five lifts for today. Finish them, then load more.
         </p>
       </section>
 
-      <section className="grid grid-cols-1 gap-6 rounded-2xl border border-line bg-card px-[25px] pb-[25px] pt-[33px] sm:grid-cols-3 sm:gap-0">
+      <section className="stats stats-vertical w-full border border-base-300 bg-base-100 sm:stats-horizontal">
         {metrics.map((metric, index) => (
-          <div
-            key={metric.label}
-            className={
-              index === 0 ? "sm:pr-6" : "sm:border-l sm:border-line sm:pl-8"
-            }
-          >
-            <p className="pb-1 text-xs text-muted">{metric.label}</p>
-            <p
-              className={`font-oswald text-4xl font-bold leading-10 ${
-                index === 0 ? "text-accent-text" : "text-fg"
+          <div key={metric.label} className="stat">
+            <div className="stat-title">{metric.label}</div>
+            <div
+              className={`stat-value font-oswald ${
+                index === 0 ? "text-accent" : ""
               }`}
             >
               {metric.value}
-            </p>
+            </div>
           </div>
         ))}
       </section>
 
       <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-        <div className="flex items-center gap-1 rounded-xl border border-line bg-card p-[5px]">
+        <div role="tablist" className="tabs tabs-box border border-base-300">
           {tabs.map(({ key, label }) => (
             <button
               key={key}
               type="button"
+              role="tab"
+              aria-selected={tab === key}
               onClick={() => setTab(key)}
-              aria-pressed={tab === key}
-              className={`rounded-lg border px-4 py-1.5 text-xs ${
-                tab === key
-                  ? "border-line bg-raised font-bold text-fg"
-                  : "border-transparent text-muted transition hover:text-fg"
-              }`}
+              className={`tab text-xs ${tab === key ? "tab-active font-bold" : ""}`}
             >
               {label}
             </button>
@@ -147,30 +138,24 @@ export default function MyPlanView() {
             label="Search your lifts by name or tag"
           />
 
-          <div className="flex items-center gap-3">
-            <label htmlFor="sort-by" className="text-xs text-muted">
-              Sort By
-            </label>
-            <div className="relative">
-              <select
-                id="sort-by"
-                value={sortKey}
-                onChange={(event) => setSortKey(event.target.value as SortKey)}
-                className="h-[34px] cursor-pointer appearance-none rounded-[9px] border border-line bg-card pl-3 pr-8 text-xs text-fg"
-              >
-                {(Object.keys(sortLabels) as SortKey[]).map((key) => (
-                  <option key={key} value={key} className="bg-card text-fg">
-                    {sortLabels[key]}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown
-                size={14}
-                aria-hidden="true"
-                className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-muted"
-              />
-            </div>
-          </div>
+          <label
+            htmlFor="sort-by"
+            className="flex items-center gap-2 text-xs text-base-content/60"
+          >
+            <span>Sort By</span>
+            <select
+              id="sort-by"
+              value={sortKey}
+              onChange={(event) => setSortKey(event.target.value as SortKey)}
+              className="select select-sm w-auto text-base-content"
+            >
+              {(Object.keys(sortLabels) as SortKey[]).map((key) => (
+                <option key={key} value={key}>
+                  {sortLabels[key]}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
       </div>
 
@@ -178,7 +163,7 @@ export default function MyPlanView() {
         {ready && source.length === 0 && <PlanEmptyState tab={tab} />}
 
         {ready && source.length > 0 && visible.length === 0 && (
-          <p className="rounded-xl border border-dashed border-dash bg-empty px-4 py-12 text-center text-sm text-muted">
+          <p className="rounded-box border border-dashed border-base-300 bg-base-100 px-4 py-12 text-center text-sm text-base-content/60">
             No lifts match &quot;{query}&quot;.
           </p>
         )}

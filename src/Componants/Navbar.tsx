@@ -29,27 +29,29 @@ export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-line bg-nav backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-2 px-4 sm:h-[80px] sm:gap-4 sm:px-6">
-        <Link
-          href="/"
-          aria-label="FitLog home"
-          onClick={(event) => handleLinkClick(event, "/")}
-          className="flex shrink-0 items-center gap-2.5"
-        >
-          <Image
-            src={logo}
-            alt=""
-            width={28}
-            height={28}
-            className="h-7 w-7 object-contain"
-          />
-          <span className="hidden font-oswald text-[18px] font-bold uppercase tracking-[0.9px] text-fg sm:inline">
-            FitLog
-          </span>
-        </Link>
+    <header className="sticky top-0 z-50 w-full border-b border-base-300 bg-base-100/90 backdrop-blur-sm">
+      <div className="navbar mx-auto min-h-16 max-w-[1280px] gap-2 px-4 sm:min-h-20 sm:px-6">
+        <div className="navbar-start">
+          <Link
+            href="/"
+            aria-label="FitLog home"
+            onClick={(event) => handleLinkClick(event, "/")}
+            className="flex items-center gap-2.5"
+          >
+            <Image
+              src={logo}
+              alt=""
+              width={28}
+              height={28}
+              className="h-7 w-7 object-contain"
+            />
+            <span className="hidden font-oswald text-lg font-bold uppercase tracking-wider sm:inline">
+              FitLog
+            </span>
+          </Link>
+        </div>
 
-        <nav className="flex items-center">
+        <nav className="navbar-center gap-1">
           {navLinks.map((link) => {
             const isActive =
               link.href === "/"
@@ -62,11 +64,11 @@ export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
                 key={link.href}
                 href={link.href}
                 onClick={(event) => handleLinkClick(event, link.href)}
-                className={
+                className={`btn btn-sm rounded-full text-xs ${
                   isActive
-                    ? "whitespace-nowrap rounded-full bg-pill px-2.5 py-[6px] text-[12px] font-semibold text-accent-text sm:px-4"
-                    : "whitespace-nowrap px-2.5 py-[5.5px] text-[12px] font-medium text-muted transition-colors hover:text-fg sm:px-4"
-                }
+                    ? "btn-soft btn-accent"
+                    : "btn-ghost text-base-content/60"
+                }`}
               >
                 {link.label}
               </Link>
@@ -74,30 +76,21 @@ export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
           })}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-3 sm:gap-5">
+        <div className="navbar-end gap-1 sm:gap-3">
           <Link
             href="/Myplan"
             aria-label={`My plan: ${planCount} planned, ${savedCount} saved`}
             onClick={(event) => handleLinkClick(event, "/Myplan")}
-            className="group flex items-center gap-3 sm:gap-6"
+            className="btn btn-ghost btn-sm gap-2 text-xs"
           >
-            <div className="flex items-center gap-2">
-              <span className="hidden text-[12px] font-medium text-soft transition-colors group-hover:text-fg sm:inline">
-                Plan
-              </span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-accent-ink">
-                {planCount}
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="hidden text-[12px] font-medium text-muted transition-colors group-hover:text-fg sm:inline">
-                Saved
-              </span>
-              <span className="flex h-5 w-5 items-center justify-center rounded-full border border-line-strong text-[11px] font-medium text-soft">
-                {savedCount}
-              </span>
-            </div>
+            <span className="hidden sm:inline">Plan</span>
+            <span className="badge badge-primary badge-sm h-5 w-5 rounded-full p-0 font-bold">
+              {planCount}
+            </span>
+            <span className="hidden text-base-content/60 sm:inline">Saved</span>
+            <span className="badge badge-outline badge-sm h-5 w-5 rounded-full p-0">
+              {savedCount}
+            </span>
           </Link>
 
           <ThemeToggle />

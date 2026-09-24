@@ -1,5 +1,85 @@
 @import "tailwindcss";
 
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: "fitlog-dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: rgb(20, 23, 30);
+  --color-base-200: rgb(15, 17, 21);
+  --color-base-300: rgb(35, 39, 50);
+  --color-base-content: rgb(255, 255, 255);
+  --color-primary: rgb(204, 255, 0);
+  --color-primary-content: rgb(15, 17, 21);
+  --color-secondary: rgb(31, 36, 45);
+  --color-secondary-content: rgb(255, 255, 255);
+  --color-accent: rgb(204, 255, 0);
+  --color-accent-content: rgb(15, 17, 21);
+  --color-neutral: rgb(31, 36, 45);
+  --color-neutral-content: rgb(209, 213, 219);
+  --color-info: rgb(56, 189, 248);
+  --color-info-content: rgb(15, 17, 21);
+  --color-success: rgb(74, 222, 128);
+  --color-success-content: rgb(15, 17, 21);
+  --color-warning: rgb(251, 191, 36);
+  --color-warning-content: rgb(15, 17, 21);
+  --color-error: rgb(239, 68, 68);
+  --color-error-content: rgb(255, 255, 255);
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "fitlog-light";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: rgb(255, 255, 255);
+  --color-base-200: rgb(246, 247, 249);
+  --color-base-300: rgb(224, 228, 235);
+  --color-base-content: rgb(15, 17, 21);
+  --color-primary: rgb(204, 255, 0);
+  --color-primary-content: rgb(15, 17, 21);
+  --color-secondary: rgb(238, 240, 244);
+  --color-secondary-content: rgb(15, 17, 21);
+  --color-accent: rgb(77, 124, 15);
+  --color-accent-content: rgb(255, 255, 255);
+  --color-neutral: rgb(55, 65, 81);
+  --color-neutral-content: rgb(255, 255, 255);
+  --color-info: rgb(2, 132, 199);
+  --color-info-content: rgb(255, 255, 255);
+  --color-success: rgb(21, 128, 61);
+  --color-success-content: rgb(255, 255, 255);
+  --color-warning: rgb(217, 119, 6);
+  --color-warning-content: rgb(255, 255, 255);
+  --color-error: rgb(220, 38, 38);
+  --color-error-content: rgb(255, 255, 255);
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@custom-variant dark (&:where([data-theme=fitlog-dark], [data-theme=fitlog-dark] *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -27,72 +107,6 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  color-scheme: light;
-  --page: rgb(246, 247, 249);
-  --card: rgb(255, 255, 255);
-  --raised: rgb(238, 240, 244);
-  --line: rgb(224, 228, 235);
-  --line-strong: rgb(203, 208, 217);
-  --fg: rgb(15, 17, 21);
-  --soft: rgb(55, 65, 81);
-  --muted: rgb(100, 108, 122);
-  --accent: rgb(204, 255, 0);
-  --accent-ink: rgb(15, 17, 21);
-  --accent-text: rgb(77, 124, 15);
-  --accent-soft: rgba(101, 163, 13, 0.12);
-  --nav: rgba(255, 255, 255, 0.9);
-  --pill: rgb(236, 252, 203);
-  --dash: rgba(0, 0, 0, 0.15);
-  --empty: rgba(0, 0, 0, 0.03);
-}
-
-.dark {
-  color-scheme: dark;
-  --page: rgb(15, 17, 21);
-  --card: rgb(20, 23, 30);
-  --raised: rgb(31, 36, 45);
-  --line: rgb(35, 39, 50);
-  --line-strong: rgb(55, 65, 81);
-  --fg: rgb(255, 255, 255);
-  --soft: rgb(209, 213, 219);
-  --muted: rgb(138, 146, 160);
-  --accent: rgb(204, 255, 0);
-  --accent-ink: rgb(15, 17, 21);
-  --accent-text: rgb(204, 255, 0);
-  --accent-soft: rgba(204, 255, 0, 0.1);
-  --nav: rgba(12, 13, 16, 0.95);
-  --pill: rgb(26, 35, 18);
-  --dash: rgba(255, 255, 255, 0.1);
-  --empty: rgba(17, 19, 23, 0.5);
-}
-
-@theme inline {
-  --color-page: var(--page);
-  --color-card: var(--card);
-  --color-raised: var(--raised);
-  --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-fg: var(--fg);
-  --color-soft: var(--soft);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
-  --color-accent-text: var(--accent-text);
-  --color-accent-soft: var(--accent-soft);
-  --color-nav: var(--nav);
-  --color-pill: var(--pill);
-  --color-dash: var(--dash);
-  --color-empty: var(--empty);
-}
-
-body {
-  background-color: var(--page);
-  color: var(--fg);
 }
 
 body {
