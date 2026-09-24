@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
 import SearchBar from "@/Componants/SearchBar";
 import WorkoutCard from "@/Componants/WorkoutCardLoad/WorkoutCard";
+import { fetchWorkouts } from "@/Lib/API";
 import { filterWorkouts } from "@/Lib/filterWorkouts";
 import type { Workout } from "@/types/fitTypes";
 
@@ -17,19 +18,19 @@ export default function Library() {
   useEffect(() => {
     let active = true;
 
-    fetch("/api/workouts")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Request failed");
-        }
-        return res.json() as Promise<Workout[]>;
-      })
-      .then((data) => {
+    async function load() {
+      try {
+        const data = await fetchWorkouts();
+
         if (active) setWorkouts(data);
-      })
-      .catch(() => {
+      } catch (error) {
+        console.error("Failed to load workouts:", error);
+
         if (active) setFailed(true);
-      });
+      }
+    }
+
+    load();
 
     return () => {
       active = false;
