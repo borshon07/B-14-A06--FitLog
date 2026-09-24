@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+FitLog
+======
 
-## Getting Started
+A dark, no-nonsense gym companion. Pick a lift, lock it into today's plan, and keep track of what you have finished.
 
-First, run the development server:
+I built this as a Next.js practice project, working from a Figma design. All twelve workouts live in a local JSON file and are served through a small API route, so there is nothing to set up besides `npm install`.
+
+Live demo: https://your-project.vercel.app
+
+Tech Stack
+----------
+
+- **Next.js 16** (App Router) with **React** and **TypeScript**
+- **Tailwind CSS** for styling
+- **Lucide React** for icons
+- **Sonner** for toast notifications
+- **localStorage** to remember your plan between visits
+
+Key Features
+------------
+
+1. **Workout library.** Twelve lifts in a responsive grid (3 columns on desktop, 2 on tablet, 1 on mobile). Each card shows the muscle groups, equipment, duration, calories and rating, and a loading skeleton appears while the data is being fetched.
+2. **Detail pages.** Click any card to see the full picture: description, specs table, and step by step instructions. Unknown URLs land on a custom 404 page.
+3. **Daily plan and saved list.** Add a workout to today's plan (capped at five lifts, just like the design says) or save it for later. The counters in the navbar update straight away.
+4. **My Plan page.** Total exercises, minutes and calories at a glance, a Today's Plan / Saved switch, sorting by duration, calories or rating, and a Mark as Done button for each lift.
+5. **Colour coded toasts.** Green for done or added, red for removed, grey for undo, so you always know what just happened. Everything is saved in the browser, so a refresh never wipes your plan.
+
+Getting Started
+---------------
 
 ```bash
+git clone https://github.com/your-username/b14-a06-fit-log.git
+cd b14-a06-fit-log
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To check that a production build works:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+Project Structure
+-----------------
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/            pages, layout, 404 and the /api/workouts route
+  AllPlan/        plan and saved state (React context + localStorage)
+  Componants/     navbar, hero, library, cards, footer, My Plan views
+  Lib/            toast helper
+  types/          TypeScript types
+  fitdata.json    workout data
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Notes
+-----
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The My Plan page lives at `/Myplan`.
+- Folder names are case sensitive on Linux servers such as Vercel, so keep the import paths exactly as the folders are named.
