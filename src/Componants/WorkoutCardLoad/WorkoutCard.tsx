@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Clock, Flame, Star } from "lucide-react";
 import type { Workout } from "@/types/fitTypes";
+import Image from "next/image";
 
 export default function WorkoutCard({ workout }: { workout: Workout }) {
   const {
@@ -19,13 +20,13 @@ export default function WorkoutCard({ workout }: { workout: Workout }) {
       href={`/workouts/${id}`}
       className="card group h-full overflow-hidden border border-base-300 bg-base-100 transition hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
-      <figure className="h-[180px] w-full bg-base-300">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <figure className="h-[180px] w-full bg-base-300 relative overflow-hidden">
+        <Image
           src={image}
           alt={name}
+          fill
           loading="lazy"
-          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          className="object-cover transition duration-300 group-hover:scale-105"
         />
       </figure>
 

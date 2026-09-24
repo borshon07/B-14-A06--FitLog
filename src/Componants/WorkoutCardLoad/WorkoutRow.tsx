@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Check, Clock, Flame, Star, X } from "lucide-react";
+import Image from "next/image";
+import { Clock, Flame, Star, Check, X } from "lucide-react";
 import type { Workout } from "@/types/fitTypes";
 
 export type Tab = "plan" | "saved";
@@ -32,15 +33,16 @@ export default function WorkoutRow({
           done ? "opacity-60" : ""
         }`}
       >
-        <div className="h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-base-300 sm:h-20 sm:w-36">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={workout.image}
-            alt=""
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-base-300 sm:h-20 sm:w-36">
+  <Image
+    src={workout.image}
+    alt=""
+    fill
+    sizes="(max-width: 640px) 96px, 144px"
+    loading="lazy"
+    className="object-cover"
+  />
+</div>
 
         <div className="flex min-w-0 flex-col gap-0.5">
           <h2 className="break-words font-oswald text-base font-bold uppercase leading-6 tracking-wide">

@@ -20,7 +20,6 @@ const navLinks = [
 export default function Navbar({ planCount = 0, savedCount = 0 }: NavbarProps) {
   const pathname = usePathname();
 
-  // Ekoi page e thakle navigate na kore upore smooth scroll korbe
   function handleLinkClick(event: MouseEvent<HTMLAnchorElement>, href: string) {
     if (pathname === href) {
       event.preventDefault();

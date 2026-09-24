@@ -1,6 +1,6 @@
 import type { Workout } from "@/types/fitTypes";
 
-// Name ba muscle group (tag) diye khoje. Boro-choto hater farak nai, ekadhik shobdo o cholbe
+
 export function filterWorkouts(list: Workout[], query: string): Workout[] {
   const words = String(query ?? "")
     .toLowerCase()
