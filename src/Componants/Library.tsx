@@ -39,6 +39,7 @@ export default function Library() {
 
   const loading = workouts === null && !failed;
   const filtered = workouts ? filterWorkouts(workouts, query) : [];
+  const searching = query.trim().length > 0;
 
   return (
     <section id="library" className="w-full scroll-mt-24 py-12 sm:py-16">
@@ -59,6 +60,12 @@ export default function Library() {
         />
       </div>
 
+      {workouts && searching && (
+        <p role="status" className="mb-4 text-xs text-muted">
+          Showing {filtered.length} of {workouts.length} workouts
+        </p>
+      )}
+
       {loading && (
         <div role="status" aria-live="polite">
           <div className="mb-6 flex items-center gap-2 text-sm text-muted">
@@ -78,7 +85,9 @@ export default function Library() {
 
       {failed && (
         <div className="flex flex-col items-start gap-3">
-          <p className="text-muted">Could not load workouts. Please try again.</p>
+          <p className="text-muted">
+            Could not load workouts. Please try again.
+          </p>
           <button
             type="button"
             onClick={() => window.location.reload()}

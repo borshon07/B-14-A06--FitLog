@@ -28,6 +28,7 @@ export default function SearchBar({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label={label}
+        autoComplete="off"
         className="h-[38px] w-full rounded-[9px] border border-line bg-card pl-9 pr-9 text-xs text-fg placeholder:text-muted focus:border-accent-text focus:outline-none"
       />
       {value && (
