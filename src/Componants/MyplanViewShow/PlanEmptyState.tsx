@@ -12,7 +12,7 @@ export default function PlanEmptyState({ tab }: { tab: Tab }) {
           ? "Browse the library and add a lift to get today moving."
           : "Save a lift from its details page and it will show up here."}
       </p>
-      <Link href="/" className="btn btn-primary rounded-full text-xs">
+      <Link href="/" className="btn btn-primary rounded-full text-md font-bold hover:!bg-[#bf9c0f] hover:!border-[#126e0b] hover:!text-black">
         Go to workouts
       </Link>
     </div>

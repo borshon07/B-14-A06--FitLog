@@ -26,7 +26,7 @@ export default function WorkoutActions({
 
     if (!done) {
       notify.error(
-        `Your plan is full. You can add up to ${MAX_PLAN_ITEMS} lifts a day.`
+        `Your plan is full. You can add up to ${MAX_PLAN_ITEMS} lifts a day.`,
       );
       return;
     }
@@ -50,14 +50,17 @@ export default function WorkoutActions({
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 ">
+        {/* Plan button */}
         <button
           type="button"
           onClick={handlePlanClick}
           disabled={planFull}
           aria-pressed={inPlan}
-          className={`btn rounded-xl ${
-            inPlan ? "btn-outline btn-accent" : "btn-primary"
+          className={`btn rounded-xl transition-colors ${
+            inPlan
+              ? "btn-outline btn-accent hover:!bg-[#c2f800] hover:!text-black"
+              : "btn-primary hover:!bg-[#27c490] hover:!text-black "
           }`}
         >
           {inPlan ? (
@@ -72,11 +75,12 @@ export default function WorkoutActions({
               : "Add to today's plan"}
         </button>
 
+        {/* Save button */}
         <button
           type="button"
           onClick={handleSaveClick}
           aria-pressed={saved}
-          className="btn btn-outline rounded-xl"
+          className="btn btn-outline rounded-xl transition-colors hover:!bg-[#1a2312] hover:!border-[#09e0dd] hover:!text-[#c2f800]"
         >
           <Bookmark
             size={16}

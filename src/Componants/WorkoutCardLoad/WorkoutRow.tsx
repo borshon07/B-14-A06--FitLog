@@ -34,15 +34,15 @@ export default function WorkoutRow({
         }`}
       >
         <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-xl bg-base-300 sm:h-20 sm:w-36">
-  <Image
-    src={workout.image}
-    alt=""
-    fill
-    sizes="(max-width: 640px) 96px, 144px"
-    loading="lazy"
-    className="object-cover"
-  />
-</div>
+          <Image
+            src={workout.image}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 96px, 144px"
+            loading="lazy"
+            className="object-cover"
+          />
+        </div>
 
         <div className="flex min-w-0 flex-col gap-0.5">
           <h2 className="break-words font-oswald text-base font-bold uppercase leading-6 tracking-wide">
@@ -90,7 +90,7 @@ export default function WorkoutRow({
           aria-label={
             mode === "plan" ? "Remove from today's plan" : "Remove from saved"
           }
-          className="btn btn-ghost btn-circle btn-sm"
+          className="btn btn-ghost btn-circle btn-sm text-[#9ca3af] hover:!bg-red-500/10 hover:!text-red-500"
         >
           <X size={16} aria-hidden="true" />
         </button>

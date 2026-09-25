@@ -7,9 +7,7 @@ import { filterWorkouts } from "@/Lib/filterWorkouts";
 import workoutsData from "@/fitdata.json";
 import type { Workout } from "@/types/fitTypes";
 import SearchBar from "@/Componants/SearchBar";
-import WorkoutRow, {
-  type Tab,
-} from "@/Componants/WorkoutCardLoad/WorkoutRow";
+import WorkoutRow, { type Tab } from "@/Componants/WorkoutCardLoad/WorkoutRow";
 import PlanEmptyState from "@/Componants/MyplanViewShow/PlanEmptyState";
 
 const workouts = workoutsData as Workout[];
