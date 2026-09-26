@@ -1,26 +1,29 @@
 # FitLog
 
-A dark, no-nonsense workout tracker built for people who just want to pick a lift, log it, and move on — no fluff, no 50-tab spreadsheet.
-
-I built this because most fitness apps either try to do too much (social feeds, AI coaches, subscription walls) or too little (a plain checklist). FitLog sits in the middle — a clean workout library, a daily plan you actually build yourself, and a "saved for later" list so good exercises don't get lost in the scroll.
+FitLog is a dark-themed workout tracking application designed for a focused, distraction-free training experience. It allows users to browse a curated exercise library, build a personalized daily workout plan, and save exercises for future reference — all within a clean, responsive interface.
 
 ## Tech Stack
 
-- **Next.js** (App Router) — routing, API routes, server/client components
-- **TypeScript** — because untyped state management is a nightmare at 1 AM
-- **Tailwind CSS v4** — CSS-first config, no more juggling a giant config file
-- **DaisyUI** — theming (dark/light) on top of Tailwind
-- **next-themes** — theme persistence across reloads
-- **Sonner** — toast notifications for instant feedback on every action
+- **Next.js (App Router)** — Server-side rendering, routing, and API endpoints
+- **TypeScript** — Static typing for safer, more maintainable code
+- **Tailwind CSS v4** — Utility-first styling with a CSS-based configuration
+- **DaisyUI** — Custom-themed component library built on top of Tailwind
+- **next-themes** — Persistent dark/light theme switching
+- **Sonner** — Toast notification system for real-time user feedback
+- **Lucide React** — Lightweight, consistent icon set
 
-## Features
+## Key Features
 
-1. **Workout Library** — Browse a full set of exercises with muscle group tags, equipment needed, difficulty, and quick stats (duration, calories, rating) — all pulled from a simple API route so it's easy to swap for a real database later.
+1. **Workout Library** — A complete, filterable collection of exercises, each displaying muscle group tags, required equipment, difficulty level, duration, calorie estimate, and user rating.
 
-2. **Today's Plan** — Add any workout straight into your plan for the day. It's not a rigid program — it's just *your* list, built one lift at a time.
+2. **Detailed Workout Pages** — Dedicated pages for each exercise featuring a description, a structured specification table (sets, reps, difficulty), and step-by-step instructions.
 
-3. **Save for Later** — Found something you want to try eventually but not today? Save it separately from your active plan, no commitment required.
+3. **Personalized Daily Plan** — Users can add exercises directly to a "Today's Plan," enabling a self-curated workout routine rather than a fixed program.
 
-4. **Dark / Light Theme** — Defaults to dark (because gym apps should look like gym apps), but switches cleanly to light mode without breaking the accent colors.
+4. **Save for Later** — A separate saved list allows users to bookmark exercises of interest without committing them to an active plan.
 
-5. **Instant Feedback Everywhere** — Every action (marked done, added to plan, removed, saved) triggers a toast notification, so you always know the app actually registered what you just did.
+5. **Real-Time Feedback System** — Every user action (adding, removing, or saving a workout) triggers a toast notification, ensuring clear and immediate confirmation of state changes.
+
+## Project Status
+
+Actively under development. Core functionality — the workout library, detail pages, and plan/save actions — is implemented and functional. The full "My Plan" dashboard view is currently in progress.
