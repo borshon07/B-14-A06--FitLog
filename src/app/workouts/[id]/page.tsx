@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import NavbarContainer from "@/Componants/NavbarContainer";
 import WorkoutActions from "@/Componants/WorkoutCardLoad/WorkoutActions";
 import workoutsData from "@/fitdata.json";
@@ -40,12 +41,13 @@ export default async function WorkoutDetailPage({
 
       <main className="mx-auto w-full max-w-[1280px] px-6 py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-box border border-base-300 bg-base-100 shadow-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-box border border-base-300 bg-base-100 shadow-lg">
+            <Image
               src={workout.image}
               alt={workout.name}
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
+              unoptimized
             />
           </div>
 
