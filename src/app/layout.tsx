@@ -1,19 +1,19 @@
-import { Oswald, Inter } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from 'sonner';
-import './globals.css';
-import { PlanProvider } from '@/AllPlan/myplan';
-import Footer from '@/Componants/Footerdom/Footer';
+import { Oswald, Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import { Toaster } from "sonner";
+import "./globals.css";
+import { PlanProvider } from "@/AllPlan/myplan";
+import Footer from "@/Componants/Footerdom/Footer";
 
 const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-oswald',
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-oswald",
 });
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export default function RootLayout({

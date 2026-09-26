@@ -1,6 +1,5 @@
 import type { Workout } from "@/types/fitTypes";
 
-
 export function filterWorkouts(list: Workout[], query: string): Workout[] {
   const words = String(query ?? "")
     .toLowerCase()

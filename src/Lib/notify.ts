@@ -26,7 +26,10 @@ const DURATION = 2500;
 
 export const notify = {
   done: (name: string) =>
-    toast.success(`${name} marked as done`, { style: success, duration: DURATION }),
+    toast.success(`${name} marked as done`, {
+      style: success,
+      duration: DURATION,
+    }),
 
   undone: (name: string) =>
     toast(`${name} marked as not done`, { style: neutral, duration: DURATION }),
@@ -38,12 +41,15 @@ export const notify = {
     }),
 
   saved: (name: string) =>
-    toast.success(`${name} saved for later`, { style: success, duration: DURATION }),
+    toast.success(`${name} saved for later`, {
+      style: success,
+      duration: DURATION,
+    }),
 
   removed: (name: string, from: "plan" | "saved") =>
     toast.error(
       `${name} removed from ${from === "plan" ? "today's plan" : "saved"}`,
-      { style: danger, duration: DURATION }
+      { style: danger, duration: DURATION },
     ),
 
   error: (message: string) =>

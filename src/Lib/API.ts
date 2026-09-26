@@ -1,6 +1,4 @@
 import type { Workout } from "@/types/fitTypes";
-
-// Env na thakle "" hobe, tokhon /api/workouts shorashori current site e jabe
 const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/$/, "");
 
 export async function fetchWorkouts(): Promise<Workout[]> {

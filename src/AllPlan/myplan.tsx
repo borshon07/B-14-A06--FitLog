@@ -81,9 +81,7 @@ function updateState(next: StoredState) {
 
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-  } catch {
-    // storage blocked hole shudhu memory te thakbe
-  }
+  } catch {}
 
   listeners.forEach((listener) => listener());
 }
@@ -91,7 +89,6 @@ function updateState(next: StoredState) {
 function subscribe(listener: () => void) {
   listeners.add(listener);
 
-  // onno tab e change hole ei tab o update hobe
   function handleStorage(event: StorageEvent) {
     if (event.key === STORAGE_KEY) {
       memoryState = loadFromStorage();
@@ -118,15 +115,17 @@ export function PlanProvider({ children }: { children: ReactNode }) {
   const ready = useSyncExternalStore(
     subscribeToNothing,
     () => true,
-    () => false
+    () => false,
   );
   const { planIds, savedIds, doneIds } = state;
 
   const isInPlan = useCallback((id: number) => planIds.includes(id), [planIds]);
-  const isSaved = useCallback((id: number) => savedIds.includes(id), [savedIds]);
+  const isSaved = useCallback(
+    (id: number) => savedIds.includes(id),
+    [savedIds],
+  );
   const isDone = useCallback((id: number) => doneIds.includes(id), [doneIds]);
 
-  // Plan e add hole true, plan full hole false return kore
   const togglePlan = useCallback((id: number) => {
     const current = getSnapshot();
 
@@ -197,7 +196,7 @@ export function PlanProvider({ children }: { children: ReactNode }) {
       togglePlan,
       toggleSaved,
       toggleDone,
-    ]
+    ],
   );
 
   return <PlanContext.Provider value={value}>{children}</PlanContext.Provider>;

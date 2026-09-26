@@ -8,12 +8,10 @@ export default function HomePage() {
       <NavbarContainer />
 
       <main className="mx-auto w-full max-w-[1280px] px-4 sm:px-6">
-        {/* Hero / Banner */}
         <div className="pt-8 sm:pt-12">
           <HeroSection />
         </div>
 
-        {/* The Library */}
         <Library />
       </main>
     </>

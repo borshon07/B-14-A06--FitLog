@@ -101,7 +101,10 @@ export default async function WorkoutDetailPage({
             </section>
 
             <div className="mt-9">
-              <WorkoutActions workoutId={workout.id} workoutName={workout.name} />
+              <WorkoutActions
+                workoutId={workout.id}
+                workoutName={workout.name}
+              />
             </div>
           </div>
         </div>
