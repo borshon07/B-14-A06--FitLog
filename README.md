@@ -4,13 +4,15 @@ FitLog is a dark-themed workout tracking application designed for a focused, dis
 
 ## Tech Stack
 
-- **Next.js (App Router)** — Server-side rendering, routing, and API endpoints
-- **TypeScript** — Static typing for safer, more maintainable code
-- **Tailwind CSS v4** — Utility-first styling with a CSS-based configuration
-- **DaisyUI** — Custom-themed component library built on top of Tailwind
-- **next-themes** — Persistent dark/light theme switching
-- **Sonner** — Toast notification system for real-time user feedback
-- **Lucide React** — Lightweight, consistent icon set
+| Technology | Purpose |
+|---|---|
+| **Next.js** | Build the UI |
+| **App Router (Next.js)** | Handle page navigation |
+| **Tailwind CSS + DaisyUI** | Styling and responsiveness |
+| **TypeScript** | Static typing for safer, more maintainable code |
+| **next-themes** | Persistent dark/light theme switching |
+| **Sonner** | Toast notification system for real-time user feedback |
+| **Lucide React** | Lightweight, consistent icon set |
 
 ## Key Features
 
