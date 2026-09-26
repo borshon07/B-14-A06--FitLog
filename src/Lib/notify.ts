@@ -4,21 +4,21 @@ import { toast } from "sonner";
 const success: CSSProperties = {
   background: "rgb(78, 207, 18)",
   color: "rgb(15,17,21)",
-  border: "1px solid rgb(60, 158, 15)",
+  border: "1px solid rgb(15, 44, 2)",
   fontWeight: 600,
 };
 
 const danger: CSSProperties = {
   background: "rgb(218, 33, 33)",
   color: "rgb(255,255,255)",
-  border: "1px solid rgb(161, 41, 41)",
+  border: "1px solid rgb(138, 55, 6)",
   fontWeight: 600,
 };
 
 const neutral: CSSProperties = {
-  background: "rgb(31,36,45)",
+  background: "rgb(117, 148, 206)",
   color: "rgb(255,255,255)",
-  border: "1px solid rgb(55,65,81)",
+  border: "1px solid rgb(1, 9, 22)",
   fontWeight: 600,
 };
 
